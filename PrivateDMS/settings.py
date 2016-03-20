@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webgui',
+    'user'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -55,7 +57,8 @@ ROOT_URLCONF = 'PrivateDMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 'PrivateDMS/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

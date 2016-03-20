@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+{% block header %}
+    <title>Mangas</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'manga/style.css' %}" />
+{% endblock %}
+{% block navigation %}{% include 'navigation.html' with activepage="profile" %}{% endblock %}
+{% block page_header %}Profile{% endblock %}
+{% block body %}
+    <p>{{ object.username }}</p>
+    <p>{{ object.email }}</p>
+    <p>{{ object.is_authenticated }}</p>
+    <p>{{ object.last_login }}</p>
+    <p>{{ object.groups }}</p>
+    <p>{{ object.password }}</p>
+{% endblock %}

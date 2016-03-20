@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+{% block header %}
+    <title>Mangas</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'manga/style.css' %}" />
+{% endblock %}
+{% block navigation %}{% include 'navigation.html' with activepage="documents" %}{% endblock %}
+{% block page_header %}Dokumente{% endblock %}
+{% block body %}
+    {% if all_mangas_list %}
+        {% for manga in all_mangas_list %}
+        {% endfor %}
+    {% else %}
+        <p>No Documents found.</p>
+    {% endif %}
+{% endblock %}
