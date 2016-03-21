@@ -1,16 +1,42 @@
 {% extends 'master.html' %}
 
 {% block header %}
-    <title>Mangas</title>
+    <title>Dokumente</title>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'manga/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'webgui/style.css' %}" />
 {% endblock %}
 {% block navigation %}{% include 'navigation.html' with activepage="documents" %}{% endblock %}
 {% block page_header %}Dokumente{% endblock %}
 {% block body %}
-    {% if all_mangas_list %}
-        {% for manga in all_mangas_list %}
+    <form action="{{ request.path }}" method="post">
+        {% csrf_token %}
+        <p>Search tags: <input type="text" name="tags"/><input type="submit" value="Search" /></p>
+    </form>
+    {% if object_list %}
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>File</td>
+                <td>Date</td>
+                <td>Uploaded</td>
+                <td>Tags</td>
+            </tr>
+        {% for document in object_list %}
+            <tr>
+                <td>{{ document.name }}</td>
+                <td>{{ document.description }}</td>
+                <td><a href="{{ document.filename.url }}">{{ document.filename }}</a></td>
+                <td>{{ document.date }}</td>
+                <td>{{ document.uploaded }}</td>
+                <td>
+                    {% for tag in document.get_tags %}
+                        #{{ tag }}
+                    {% endfor %}
+                </td>
+            </tr>
         {% endfor %}
+        </table>
     {% else %}
         <p>No Documents found.</p>
     {% endif %}

@@ -9,8 +9,6 @@ from django.utils.decorators import method_decorator
 
 from .models import DmsUser
 
-from collections import defaultdict
-
 register = template.Library()
 
 

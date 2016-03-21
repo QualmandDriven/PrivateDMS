@@ -2,12 +2,12 @@
     <h3><a href="/">PrivateDMS</a></h3>
     <ul class="nav nav-sidebar">
     <li>Username</li>
-    <li {% if activepage == "profile" %}class="active"{% endif %}><a href="/account/profile">Profile <span class="sr-only">(current)</span></a></li>
+    <li {% if activepage == "profile" %}class="active"{% endif %}><a href="/accounts/profile">Profile <span class="sr-only">(current)</span></a></li>
 
       {% if user.is_anonymous %}
-          <li {% if activepage == "login" %}class="active"{% endif %}><a href="/account/login">Login</a></li>
+          <li {% if activepage == "login" %}class="active"{% endif %}><a href="/accounts/login">Login</a></li>
       {% else %}
-          <li {% if activepage == "logout" %}class="active"{% endif %}><a href="/account/logout">Logout ({{ user.username }})</a></li>
+          <li {% if activepage == "logout" %}class="active"{% endif %}><a href="/accounts/logout">Logout ({{ user.username }})</a></li>
       {% endif %}
         {% if user.is_staff %}
             <li><a href="/admin">Admin Page</a></li>
@@ -15,5 +15,7 @@
   </ul>
   <ul class="nav nav-sidebar">
     <li {% if activepage == "documents" %}class="active"{% endif %}><a href="/">Dokumente</a></li>
+    <li {% if activepage == "new_document" %}class="active"{% endif %}><a href="/newdocument">Add Dokumente</a></li>
+    <li {% if activepage == "unfinished_documents" %}class="active"{% endif %}><a href="/">Unfertige Dokumente (2)</a></li>
   </ul>
 </div>
